@@ -219,7 +219,7 @@ const checkLang = () => {
 
 const changeText = () => {
   document.querySelector('.title').innerHTML = lang === 'eng' ? 'Virtual keyboard' : 'Виртуальная клавиатура'
-  document.querySelector('.changeLng').innerHTML = (lang === 'eng' ? 'Change to Russian Language' : 'Сменить на Английский язык') + ': Shift + Alt'
+  document.querySelector('.changeLng').innerHTML = (lang === 'eng' ? 'Made on a Windows keyboard. Change to Russian Language' : 'Сделано на клавиатуре Windows. Сменить на Английский язык') + ': Shift + Alt'
 }
 
 const addText = key => {
