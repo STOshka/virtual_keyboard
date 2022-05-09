@@ -1,0 +1,63 @@
+body {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.keyboard {
+    display: flex;
+    width: 980px;
+    flex-wrap: wrap;
+    background-color: #808080;
+    padding: 10px;
+}
+
+.key {
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+.key[data-key='CapsLock'] {
+    width: 80px;
+}
+
+.key[data-key='Enter'] {
+    width: 110px;
+}
+
+.key[data-key='ShiftLeft'],
+.key[data-key='ShiftRight'] {
+    width: 95px;
+}
+
+.key[data-key='Space'] {
+    width: 480px;
+}
+
+.key[data-key='Backspace'] {
+    font-size: 13px;
+}
+
+.key.active {
+    background-color: #0000ff;
+    color: #ffffff;
+}
+
+.textarea {
+    width: 980px;
+    height: 200px;
+    padding: 10px;
+    word-break: break-all;
+    resize: none;
+}
+
+.changeLng,
+.title {
+    text-align: center;
+}
