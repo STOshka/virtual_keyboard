@@ -100,13 +100,12 @@ let keys = [];
 let textarea;
 const BODY = document.querySelector('body');
 let caps = false;
+let capsPressed = false;
 let shift = false;
 let alt = false;
 let lang = 'eng';
 
 const getKey = (key) => KEYS[key][lang][caps === shift ? 'lower' : 'upper'];
-
-const findKey = (key) => [...keys].find((_key) => _key.dataset.key === key);
 
 const changeKeys = () => {
   keys.forEach((_key) => {
@@ -131,18 +130,19 @@ const checkLang = () => {
 const addText = (key) => {
   const pos = textarea.selectionStart;
   textarea.value = textarea.value.substr(0, textarea.selectionStart) + key
-    + textarea.value.substr(textarea.selectionEnd);
+  + textarea.value.substr(textarea.selectionEnd);
   textarea.selectionStart = pos + 1;
   textarea.selectionEnd = pos + 1;
 };
 
 const pressKey = (key) => {
-  if (key === 'CapsLock') {
-    findKey(key).classList.toggle('active');
+  if (key === 'CapsLock' && !capsPressed) {
+    document.querySelector(`.${key}`).classList.toggle('active');
     caps = !caps;
+    capsPressed = true;
     changeKeys();
   } else {
-    findKey(key).classList.add('active');
+    document.querySelector(`.${key}`).classList.add('active');
   }
   if (key.indexOf('Shift') > -1) {
     shift = true;
@@ -156,14 +156,14 @@ const pressKey = (key) => {
     let start = textarea.selectionStart;
     if (textarea.selectionStart !== textarea.selectionEnd) start += 1;
     textarea.value = textarea.value.substr(0, start - 1)
-      + textarea.value.substr(textarea.selectionEnd, textarea.value.length - textarea.selectionEnd);
+    + textarea.value.substr(textarea.selectionEnd, textarea.value.length - textarea.selectionEnd);
     textarea.selectionStart = start - 1;
     textarea.selectionEnd = start - 1;
   } else if (key === 'Delete') {
     let end = textarea.selectionEnd;
     if (textarea.selectionStart !== textarea.selectionEnd) end -= 1;
     textarea.value = textarea.value.substr(0, textarea.selectionStart)
-      + textarea.value.substr(end + 1, textarea.value.length - end - 1);
+    + textarea.value.substr(end + 1, textarea.value.length - end - 1);
     textarea.selectionStart = end;
     textarea.selectionEnd = end;
   } else if (key === 'Tab') {
@@ -218,8 +218,11 @@ const pressKey = (key) => {
 };
 
 const outClick = (key) => {
-  if (key === 'CapsLock') return;
-  findKey(key)?.classList.remove('active');
+  if (key === 'CapsLock') {
+    capsPressed = false;
+    return;
+  }
+  document.querySelector(`.${key}`).classList.remove('active');
   if (key.indexOf('Shift') > -1) {
     shift = false;
     checkLang();
@@ -234,7 +237,8 @@ const outClick = (key) => {
 
 document.addEventListener('keydown', (e) => {
   e.preventDefault();
-  if (findKey(e.code)) {
+  const key = document.querySelector(`.${e.code}`);
+  if (key) {
     pressKey(e.code);
   }
 });
@@ -262,6 +266,7 @@ const generateSite = () => {
   Object.keys(KEYS).forEach((key) => {
     const div = document.createElement('div');
     div.classList.add('key');
+    div.classList.add(key);
     div.dataset.key = key;
     div.innerHTML = key;
     KEYBOARD.append(div);
