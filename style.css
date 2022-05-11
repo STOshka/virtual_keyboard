@@ -27,35 +27,35 @@ body {
     cursor: pointer;
 }
 
-.key[data-key='CapsLock'] {
+.CapsLock {
     width: 80px;
 }
 
-.key[data-key='Tab'] {
+.Tab {
     width: 75px;
 }
 
-.key[data-key='Delete'] {
+.Delete {
     width: 85px;
 }
 
-.key[data-key='Enter'] {
+.Enter {
     width: 150px;
 }
 
-.key[data-key='ShiftLeft']{
+.ShiftLeft {
     width: 100px;
 }
 
-.key[data-key='ShiftRight'] {
+.ShiftRight {
     width: 130px;
 }
 
-.key[data-key='Space'] {
+.Space {
     width: 520px;
 }
 
-.key[data-key='Backspace'] {
+.Backspace {
     width: 100px;
 }
 
