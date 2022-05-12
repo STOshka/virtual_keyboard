@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 1040px;
+    margin: 0 auto;
+}
+
+.keyboard {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    background-color: #808080;
+    padding: 10px;
+}
+
+.key {
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+.CapsLock {
+    width: 80px;
+}
+
+.capsPressed {
+    background-color: #00ff00;
+}
+
+.Tab {
+    width: 75px;
+}
+
+.Delete {
+    width: 85px;
+}
+
+.Enter {
+    width: 150px;
+}
+
+.ShiftLeft {
+    width: 100px;
+}
+
+.ShiftRight {
+    width: 130px;
+}
+
+.Space {
+    width: 520px;
+}
+
+.Backspace {
+    width: 100px;
+}
+
+.key.active {
+    background-color: #0000ff;
+    color: #ffffff;
+}
+
+.textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    word-break: break-all;
+    resize: none;
+}
+
+.changeLng,
+.title {
+    text-align: center;
+}
