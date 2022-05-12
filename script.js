@@ -136,11 +136,13 @@ const addText = (key) => {
 };
 
 const pressKey = (key) => {
-  if (key === 'CapsLock' && !capsPressed) {
-    document.querySelector(`.${key}`).classList.toggle('active');
-    caps = !caps;
-    capsPressed = true;
-    changeKeys();
+  if (key === 'CapsLock') {
+    if (!capsPressed) {
+      document.querySelector(`.${key}`).classList.toggle('active');
+      caps = !caps;
+      capsPressed = true;
+      changeKeys();
+    }
   } else {
     document.querySelector(`.${key}`).classList.add('active');
   }
