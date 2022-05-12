@@ -136,15 +136,14 @@ const addText = (key) => {
 };
 
 const pressKey = (key) => {
+  document.querySelector(`.${key}`).classList.add('active');
   if (key === 'CapsLock') {
     if (!capsPressed) {
-      document.querySelector(`.${key}`).classList.toggle('active');
+      document.querySelector(`.${key}`).classList.toggle('capsPressed');
       caps = !caps;
       capsPressed = true;
       changeKeys();
     }
-  } else {
-    document.querySelector(`.${key}`).classList.add('active');
   }
   if (key.indexOf('Shift') > -1) {
     shift = true;
@@ -220,11 +219,10 @@ const pressKey = (key) => {
 };
 
 const outClick = (key) => {
+  document.querySelector(`.${key}`).classList.remove('active');
   if (key === 'CapsLock') {
     capsPressed = false;
-    return;
   }
-  document.querySelector(`.${key}`).classList.remove('active');
   if (key.indexOf('Shift') > -1) {
     shift = false;
     checkLang();
